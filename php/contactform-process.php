@@ -2,56 +2,56 @@
 $errorMSG = "";
 
 if (empty($_POST["name"])) {
-    $errorMSG = "Name is required ";
+    $errorMSG = "Nome é obrigatório ";
 } else {
     $name = $_POST["name"];
 }
 
 if (empty($_POST["email"])) {
-    $errorMSG = "Email is required ";
+    $errorMSG = "Email é obrigatório ";
 } else {
     $email = $_POST["email"];
 }
 
 if (empty($_POST["message"])) {
-    $errorMSG = "Message is required ";
+    $errorMSG = "Mensagem é obrigatório ";
 } else {
     $message = $_POST["message"];
 }
 
-if (empty($_POST["terms"])) {
+/*if (empty($_POST["terms"])) {
     $errorMSG = "Terms is required ";
 } else {
     $terms = $_POST["terms"];
-}
+}*/
 
-$EmailTo = "yourname@domain.com";
-$Subject = "New message from Aria landing page";
+$EmailTo = "contato@vermelhoveiculos.com.br";
+$Subject = "Nova mensagem do site da Vermelho Veículos";
 
 // prepare email body text
 $Body = "";
-$Body .= "Name: ";
+$Body .= "Nome: ";
 $Body .= $name;
 $Body .= "\n";
 $Body .= "Email: ";
 $Body .= $email;
 $Body .= "\n";
-$Body .= "Message: ";
+$Body .= "Mensagem: ";
 $Body .= $message;
 $Body .= "\n";
-$Body .= "Terms: ";
+/*$Body .= "Terms: ";
 $Body .= $terms;
-$Body .= "\n";
+$Body .= "\n";*/
 
 // send email
-$success = mail($EmailTo, $Subject, $Body, "From:".$email);
+$success = mail($EmailTo, $Subject, $Body, "De:".$email);
 
 // redirect to success page
 if ($success && $errorMSG == ""){
-   echo "success";
+   echo "sucesso";
 }else{
     if($errorMSG == ""){
-        echo "Something went wrong :(";
+        echo "Algo deu errado :(";
     } else {
         echo $errorMSG;
     }

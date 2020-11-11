@@ -2,64 +2,64 @@
 $errorMSG = "";
 
 if (empty($_POST["name"])) {
-    $errorMSG = "Name is required ";
+    $errorMSG = "Nome é obrigatório ";
 } else {
     $name = $_POST["name"];
 }
 
 if (empty($_POST["phone"])) {
-    $errorMSG = "Phone is required ";
+    $errorMSG = "Telefone é obrigatório ";
 } else {
     $phone = $_POST["phone"];
 }
 
 if (empty($_POST["email"])) {
-    $errorMSG = "Email is required ";
+    $errorMSG = "Email é obrigatório ";
 } else {
     $email = $_POST["email"];
 }
 
 if (empty($_POST["select"])) {
-    $errorMSG = "Select is required ";
+    $errorMSG = "Serviço é obrigatório ";
 } else {
     $select = $_POST["select"];
 }
 
-if (empty($_POST["terms"])) {
+/*if (empty($_POST["terms"])) {
     $errorMSG = "Terms is required ";
 } else {
     $terms = $_POST["terms"];
-}
+}*/
 
-$EmailTo = "yourname@domain.com";
-$Subject = "New quote request from Aria landing page";
+$EmailTo = "contato@vermelhoveiculos.com.br";
+$Subject = "Novo orçamento solicitado pelo site Vermelho veículos";
 
 // prepare email body text
 $Body = "";
-$Body .= "Name: ";
+$Body .= "Nome: ";
 $Body .= $name;
 $Body .= "\n";
-$Body .= "Phone: ";
+$Body .= "Telefone: ";
 $Body .= $phone;
 $Body .= "\n";
 $Body .= "Email: ";
 $Body .= $email;
 $Body .= "\n";
-$Body .= "Package: ";
+$Body .= "Serviço: ";
 $Body .= $select;
-$Body .= "\n";
+/*$Body .= "\n";
 $Body .= "Terms: ";
 $Body .= $terms;
-$Body .= "\n";
+$Body .= "\n";*/
 
 // send email
 $success = mail($EmailTo, $Subject, $Body, "From:".$email);
 // redirect to success page
 if ($success && $errorMSG == ""){
-   echo "success";
+   echo "sucesso";
 }else{
     if($errorMSG == ""){
-        echo "Something went wrong :(";
+        echo "Algo deu errado :(";
     } else {
         echo $errorMSG;
     }
